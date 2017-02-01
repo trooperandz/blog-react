@@ -1,0 +1,36 @@
+body {
+    background-color: #385972;
+}
+
+nav {
+    background-color: #385972;
+}
+
+.nav-list li {
+    color: rgb(210, 236, 255);
+    padding: 14px 30px;
+    border-bottom: 1px solid #696969;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: rgb(210, 236, 255);
+    font-weight: 100;
+}
+
+p {
+    color: #fff;
+    font-weight: 200;
+    font-size: 17px;
+}
+
+.date {
+    color: #b7b7b7;
+}
+
+.color-dk-blue {
+    color: #385972;
+}
+
+.color-lt-blue {
+    color: rgb(210, 236, 255);
+}
