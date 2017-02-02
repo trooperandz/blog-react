@@ -11,24 +11,24 @@ export default class Blog extends React.Component {
     constructor(props) {
         super(props);
 
+        // Populate a default category list on initial page load
         this.state = {
-            selectedCategoryArticles: this.getCategoryArticles(this.props.defaultCategoryId),
+            articles: this.props.articles,
+            selectedCategoryId: this.props.defaultCategoryId,
         }
-    }
-
-    getCategoryArticles(categoryId) {
-        return this.props.articles.filter((article) => {
-            return article.categoryId === categoryId;
-        });
     }
 
     _onCategorySelected(categoryId) {
         this.setState({
-            selectedCategoryArticles: this.getCategoryArticles(categoryId)
+            selectedCategoryId: categoryId,
         });
     }
 
     render() {
+        let selectedCategoryArticles = this.state.articles.filter((article) => {
+            return article.categoryId === this.state.selectedCategoryId;
+        }, this);
+
         return(
             <div>
                 <div className="row">
@@ -37,7 +37,7 @@ export default class Blog extends React.Component {
                             onCategorySelected={this._onCategorySelected.bind(this)} />
                     </div>
                     <div className="col s12 m8 l10">
-                        <BlogList articles={this.state.selectedCategoryArticles} />
+                        <BlogList articles={selectedCategoryArticles} />
                         <BlogEntry />
                     </div>
                 </div>
