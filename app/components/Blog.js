@@ -15,6 +15,7 @@ export default class Blog extends React.Component {
         this.state = {
             articles: this.props.articles,
             selectedCategoryId: this.props.defaultCategoryId,
+            selectedArticleId: 1,
         }
     }
 
@@ -24,9 +25,21 @@ export default class Blog extends React.Component {
         });
     }
 
+    _onArticleSelected(articleId) {
+        console.log('articleId selected: ' + articleId);
+        this.setState({
+            selectedArticleId: articleId,
+        })
+    }
+
     render() {
         let selectedCategoryArticles = this.state.articles.filter((article) => {
             return article.categoryId === this.state.selectedCategoryId;
+        }, this);
+
+        let selectedArticle = this.state.articles.filter((article) => {
+            console.log('selectedArticle loop: ', article);
+            return article.id === this.state.selectedArticleId;
         }, this);
 
         return(
@@ -37,8 +50,9 @@ export default class Blog extends React.Component {
                             onCategorySelected={this._onCategorySelected.bind(this)} />
                     </div>
                     <div className="col s12 m8 l10">
-                        <BlogList articles={selectedCategoryArticles} />
-                        <BlogEntry />
+                        <BlogList articles={selectedCategoryArticles}
+                            onArticleSelected={this._onArticleSelected.bind(this)} />
+                        <BlogEntry article={selectedArticle} />
                     </div>
                 </div>
             </div>

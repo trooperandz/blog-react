@@ -12,7 +12,7 @@ export default class BlogLink extends React.Component {
             <li className="collection-item dismissable">
                 <div>
                     {this.props.data.heading}
-                    <a href={`/blogEntry/${this.props.data.id}`} className="secondary-content"><i class="material-icons">send</i></a>
+                    <a onClick={this.props.onArticleSelected.bind(null, this.props.data.id)} className="secondary-content"><i class="material-icons">View</i></a>
                 </div>
             </li>
         );

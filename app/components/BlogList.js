@@ -8,14 +8,16 @@ export default class BlogList extends React.Component {
 
     render() {
         return (
-            <div className="collection with-header">
+            <div>
+                <ul className="collection with-header categories">
                 {
-                    this.props.articles.map((obj, index) => {
+                    this.props.articles.map((article, index) => {
                         return(
-                            <BlogLink key={index} data={obj} />
+                            <BlogLink key={index} data={article} onArticleSelected={this.props.onArticleSelected} />
                         );
                     })
                 }
+                </ul>
             </div>
         );
     }
